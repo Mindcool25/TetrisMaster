@@ -10,12 +10,14 @@ Block::Block()
 	rotation = 0;
 }
 
+// Allowing for non default values
 Block::Block(int shape, int blockrotation)
 {
 	blocktype = shape;
 	rotation = blockrotation;
 }
 
+// Rotating 90 degrees counterclockwise
 void Block::rotateLeft()
 {
 	if(rotation == 0)
@@ -28,6 +30,7 @@ void Block::rotateLeft()
 	}
 }
 
+// Rotating 90 degrees clockwise
 void Block::rotateRight()
 {
 	if (rotation == 3)
