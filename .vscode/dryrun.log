@@ -1,7 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/zachm/Documents/programming/c++/tetrismaster'
-g++ -o build/main.o -c src/main.cpp
-g++ -o build/board.o -c src/board.cpp
-g++ -o bin/main build/board.o build/main.o
-make: Leaving directory '/home/zachm/Documents/programming/c++/tetrismaster'
- 
