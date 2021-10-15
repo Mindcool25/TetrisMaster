@@ -42,3 +42,15 @@ void Block::rotateRight()
 		rotation ++;
 	}
 }
+
+// moving left
+void Block::moveLeft()
+{
+	x--;
+}
+
+// moving right
+void Block::moveRight()
+{
+	x++;
+}
