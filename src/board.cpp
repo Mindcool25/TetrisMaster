@@ -66,8 +66,6 @@ void board::gravity()
 		{
 				playField[0][k] = 0;
 		}
-		cout << "Pass: " << rows.size() - i << endl;
-		cout << printBoard();
  	}
 }
 
