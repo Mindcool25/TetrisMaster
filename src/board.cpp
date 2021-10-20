@@ -40,9 +40,6 @@ void board::checkIfRow()
         if (fullrow == true)
         {
 			rows.push_back(i);
-			for (int i = 0; i < rows.size(); i++)
-			{
-			}
         }
 
     }
