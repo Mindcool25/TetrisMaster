@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "colors.h"
 
 using namespace std;
 
@@ -74,39 +75,39 @@ ostream& operator << (ostream &out, board &t)
     // Loop through entire array
     for (int i = 0; i < 20; i++)
     {
-        out << "|";
+        out << fg_white << "|";
         for (int j = 0; j < 10; j++)
         {
             switch(t.playField[i][j])
             {
 				case 0:
-					out << " . ";
+					out << fg_white << " . ";
 					break;
                 case 1:
-                    out << t.iPattern;
+                    out << fg_cyan << t.iPattern;
 					break;
                 case 2:
-                	out << t.oPattern;
+                	out << fg_yellow << t.oPattern;
 					break;
             	case 3:
-					out << t.tPattern;
+					out << fg_purple << t.tPattern;
 					break;
 				case 4:
-					out << t.sPattern;
+					out << fg_green << t.sPattern;
 					break;
 				case 5:
-					out << t.zPattern;
+					out << fg_red << t.zPattern;
 					break;
 				case 6:
-					out << t.jPattern;
+					out << fg_blue << t.jPattern;
 					break;
 				case 7:
-					out << t.lPattern;
+					out << fg_orange << t.lPattern;
 					break;
             }
         }
-        out << "|\n";
+        out << fg_white << "|\n";
     }
-	out << "________________________________\n";
+	out << fg_white << "________________________________\n";
     return out;
 }
