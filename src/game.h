@@ -14,6 +14,12 @@ class game{
 
 		// score value, starts at 0
 		int score = 0;
+
+		// Public movement methods
+		void moveLeft();
+		void moveRight();
+		void rotateLeft();
+		void rotateRight();
 	
 	private:
 		// private methods
