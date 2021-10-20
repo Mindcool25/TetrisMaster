@@ -34,17 +34,14 @@ void board::checkIfRow()
         {
             if (playField[i][j] == 0)
             {
-                cout << "Empty spot in row " << i << endl;
                 fullrow = false;
             }
         }
         if (fullrow == true)
         {
-            cout << "Full row on row " << i << endl;
 			rows.push_back(i);
 			for (int i = 0; i < rows.size(); i++)
 			{
-				cout << rows[i] << " ";
 			}
         }
 
@@ -110,4 +107,4 @@ ostream& operator << (ostream &out, board &t)
     }
 	out << fg_white << "________________________________\n";
     return out;
-}
+};
