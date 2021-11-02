@@ -202,6 +202,8 @@ class Block{
         // Variables
         int x;
         int y;
+        int rotation;
+        int blocktype;
 
         // public methods
         // Rotating
@@ -210,10 +212,4 @@ class Block{
         // Moving
         void moveRight();
         void moveLeft();
-
-    private:
-        // Private variables
-        int blocktype;
-        int rotation;
-
 };

@@ -7,6 +7,11 @@
 
 using namespace std;
 
+board::board()
+{
+    resetBoard();
+}
+
 // Resetting board to all 0s
 void board::resetBoard()
 {
@@ -14,11 +19,11 @@ void board::resetBoard()
     // Loop through entire array
     for (int i = 0; i < 20; i++)
     {
-		
+
         for (int j = 0; j < 10; j++)
         {
             // Set current spot to 0
-            playField[i][j] = rand() % 8;
+            playField[i][j] = 0; // rand() % 8; // FOR TESTING
         }
     }
 }

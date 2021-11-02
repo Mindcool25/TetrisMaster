@@ -15,6 +15,9 @@ class board
         void checkIfRow();
         void gravity();
 
+        // Default contsructor
+        board();
+
         // Overloaded constructors
         friend ostream& operator << (ostream &out, board &b);
     private:
