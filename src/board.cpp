@@ -53,7 +53,7 @@ void board::checkIfRow()
 void board::gravity()
 {
 	// Iterate through vector
-	for (int i = 0; i < rows.size(); i++)
+	for (int i = 0; i < (int)rows.size(); i++)
 	{
 		for(int j = rows[i]; j > 0; j --)
 		{

@@ -73,7 +73,7 @@ void game::writeToBoard()
 {
     for(int i = 0; i < 4; i++)
     {
-        for(int j = 0; i < 4; j++)
+        for(int j = 0; j < 4; j++)
         {
             if (b.blockshape[b.blocktype][b.rotation][i][j] != 0)
             {

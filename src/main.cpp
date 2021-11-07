@@ -16,5 +16,11 @@ int main()
 {
     cout << "TetrisMaster\nC++ Edition\n" << endl;
     game run;
+    cout << "Empty board" << endl;
     cout << run.playfield;
+    cout << "Board with a block (Hopefully)" << endl;
+    run.writeToBoard();
+    cout << run.playfield;
+
+    return 0;
 }

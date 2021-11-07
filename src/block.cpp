@@ -8,6 +8,8 @@ Block::Block()
 {
     blocktype = 0;
 	rotation = 0;
+	x = 4;
+	y = 4;
 }
 
 // Allowing for non default values
