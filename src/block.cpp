@@ -8,8 +8,14 @@ Block::Block()
 {
     blocktype = 0;
 	rotation = 0;
-	x = 4;
-	y = 4;
+
+	/*
+	X and Y stuff is weird. 0 0 will put the block in the top left hand corner,
+	and when referring to x and y for array stuff make sure to put [y][x]
+	just fun array stuff there.
+	*/
+	x = 0;
+	y = -1;
 }
 
 // Allowing for non default values

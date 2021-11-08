@@ -23,7 +23,7 @@ void board::resetBoard()
         for (int j = 0; j < 10; j++)
         {
             // Set current spot to 0
-            playField[i][j] = 0; // rand() % 8; // FOR TESTING
+            playField[i][j] = 0;//rand() % 8; // FOR TESTING
         }
     }
 }

@@ -1,3 +1,11 @@
+// This stuff is for crossplatform delay
+#ifdef _WINDOWS
+#include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(x) usleep((x)*1000)
+#endif
+
 #include <iostream>
 #include "game.h"
 #include "block.h"
@@ -12,7 +20,7 @@ game::game()
     board playfield;
     Block b;
 
-    // Setting intial point values
+    // Setting initial point values
     placeBonus = 5;
     onelineBonus = 15;
     twolineBonus = 30;
@@ -20,7 +28,7 @@ game::game()
     tetrisBonus = 50;
 }
 
-// Overloaded contstructor
+// Overloaded constructor
 game::game(board bo, Block bl, int place, int one, int two, int three, int tetris)
 {
     // Setting objects
@@ -36,7 +44,7 @@ game::game(board bo, Block bl, int place, int one, int two, int three, int tetri
 }
 
 // Private methods
-bool game::canMove(int rotate, int movex, int movey)
+bool game::canMove(int rotateval, int movex, int movey)
 {
     bool moveable = true;
     int clearboard[20][10];
@@ -51,19 +59,33 @@ bool game::canMove(int rotate, int movex, int movey)
 	    }
     }
     // clear the old block from the board to not detect itself
-    // Done througha loop again (thanks c++)
+    // Done through a loop again (thanks c++)
     for(int i = 0; i < 4; i++)
     {
-        for(int j = 0; i < 4; j++)
+        for(int j = 0; j < 4; j++)
         {
             if (b.blockshape[b.blocktype][b.rotation][i][j] != 0)
             {
                 // replace every nonzero block spot to zero
+                clearboard[i][j] = 0;
             }
         }
     }
     // check for collisions with intended transformation, only check the spots that != 0
-
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            // Making sure that the space it is searching is indeed not 0
+            if(b.blockshape[b.blocktype][b.rotation][i][j] != 0)
+            {
+                if(clearboard[b.y + i][b.x + j] != 0)
+                {
+                    moveable = false;
+                }
+            }
+        }
+    }
     // If there is a collision, change moveable to false
 
     return moveable;
@@ -78,8 +100,13 @@ void game::writeToBoard()
             if (b.blockshape[b.blocktype][b.rotation][i][j] != 0)
             {
                 // replace every nonzero block spot to what it should be
-                playfield.playField[b.x + i][b.y + j] = b.blockshape[b.blocktype][b.rotation][i][j];
+                playfield.playField[b.y + i][b.x + j] = b.blockshape[b.blocktype][b.rotation][i][j];
             }
         }
     }
+}
+
+void game::updateMove()
+{
+
 }
