@@ -17,37 +17,9 @@ int main()
     cout << "TetrisMaster\nC++ Edition\n" << endl;
     game run;
     cout << run.playfield;
-    run.updateMove();
-    cout << "Block X: " << run.b.x << endl;
-    cout << "Block Y: " << run.b.y << endl;
-    cout << run.playfield;
-    run.moveRight();
-    cout << "Block X: " << run.b.x << endl;
-    cout << "Block Y: " << run.b.y << endl;
-    cout << run.playfield;
-    run.updateMove();
-    cout << "Block X: " << run.b.x << endl;
-    cout << "Block Y: " << run.b.y << endl;
-    cout << run.playfield;
-    run.moveLeft();
-    cout << "Block X: " << run.b.x << endl;
-    cout << "Block Y: " << run.b.y << endl;
-    cout << run.playfield;
-    run.updateMove();
-    cout << "Block X: " << run.b.x << endl;
-    cout << "Block Y: " << run.b.y << endl;
-    cout << run.playfield;
-    run.moveLeft();
-    cout << "Block X: " << run.b.x << endl;
-    cout << "Block Y: " << run.b.y << endl;
-    cout << run.playfield;
-    run.moveLeft();
-    cout << "Block X: " << run.b.x << endl;
-    cout << "Block Y: " << run.b.y << endl;
-    cout << run.playfield;
-    /*
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 100; i++)
     {
+        cout << "in for loop" << endl;
         run.updateMove();
         // run.moveRight();
         cout << run.playfield;
@@ -56,8 +28,8 @@ int main()
             - Add function that creates new block when the current block hits the floor / other blocks
             - Write moveRight function
             - Write slam function ( Just a for loop with moving down and checking for collision ever time. Simple stuff )
+        */
 
     }
-    */
     return 0;
 }

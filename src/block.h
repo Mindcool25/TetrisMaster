@@ -6,6 +6,7 @@ class Block{
         // Constructors
         Block();
         Block(int, int);
+        void reset();
         // Blockshapes list
         int blockshape[7][4][4][4] = {
             // Shape one
@@ -204,6 +205,7 @@ class Block{
         int y;
         int rotation;
         int blocktype;
+        bool hitbottom;
 
         // public methods
         // Rotating

@@ -14,8 +14,11 @@ Block::Block()
 	and when referring to x and y for array stuff make sure to put [y][x]
 	just fun array stuff there.
 	*/
-	x = 0;
+	x = 3;
 	y = -1;
+
+	// Setting hit bottom to false
+	bool hitbottom = false;
 }
 
 // Allowing for non default values
@@ -66,4 +69,21 @@ void Block::moveRight()
 void Block::moveDown()
 {
     y++;
+}
+
+void Block::reset()
+{
+    blocktype = 0;
+	rotation = 0;
+
+	/*
+	X and Y stuff is weird. 0 0 will put the block in the top left hand corner,
+	and when referring to x and y for array stuff make sure to put [y][x]
+	just fun array stuff there.
+	*/
+	x = 3;
+	y = -1;
+
+	// Setting hit bottom to false
+	bool hitbottom = false;
 }

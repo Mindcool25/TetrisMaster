@@ -156,6 +156,19 @@ void game::updateMove()
         clearBoard();
         b.moveDown();
     }
+    else
+    {
+        if(!b.hitbottom)
+        {
+            b.hitbottom = true;
+            cout << "hit bottom" << endl;
+        }
+        else
+        {
+            cout << "Creating new block?" << endl;
+            b.reset();
+        }
+    }
     writeToBoard();
 
 }
