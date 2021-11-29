@@ -28,6 +28,7 @@ class game{
 		// Main game play loop items
 		// Writing block to board
 		void writeToBoard();
+		void clearBoard();
 		// Updating the
 		void updateMove();
 

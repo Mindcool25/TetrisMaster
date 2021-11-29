@@ -62,3 +62,8 @@ void Block::moveRight()
 {
 	x++;
 }
+
+void Block::moveDown()
+{
+    y++;
+}

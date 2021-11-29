@@ -212,4 +212,5 @@ class Block{
         // Moving
         void moveRight();
         void moveLeft();
+        void moveDown();
 };

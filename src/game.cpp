@@ -10,6 +10,7 @@
 #include "game.h"
 #include "block.h"
 #include "board.h"
+#include "curses.h"
 
 using namespace std;
 
@@ -26,6 +27,9 @@ game::game()
     twolineBonus = 30;
     threelineBonus = 40;
     tetrisBonus = 50;
+
+    // Placing first block
+    writeToBoard();
 }
 
 // Overloaded constructor
@@ -46,6 +50,10 @@ game::game(board bo, Block bl, int place, int one, int two, int three, int tetri
 // Private methods
 bool game::canMove(int rotateval, int movex, int movey)
 {
+    cout << "Checking..." << endl;
+    cout << "Rotation: " << rotateval << endl;
+    cout << "Movex: " << movex << endl;
+    cout << "Movey: " << movey << endl;
     bool moveable = true;
     int clearboard[20][10];
     // create a copy of the board array so we have a non-destructive way of checking collisions
@@ -79,18 +87,36 @@ bool game::canMove(int rotateval, int movex, int movey)
             // Making sure that the space it is searching is indeed not 0
             if(b.blockshape[b.blocktype][b.rotation][i][j] != 0)
             {
-                if(clearboard[b.y + i][b.x + j] != 0)
+                if(clearboard[b.y + i + movey][b.x + j + movex] != 0)
+                {
+                    // If there is a collision, change moveable to false
+                    // DEBUG cout << clearboard[b.y + i + movey][b.x + j + movex] << endl;
+                    moveable = false;
+                    cout << "Hit another thing" << endl;
+                }
+                if(b.y + i + movey > 19 || b.x + j + movex > 9 || b.x + j + movex < 0)
                 {
                     moveable = false;
+                    cout << "Hit wall or floor" << endl;
                 }
+                // DEBUG cout << "Current testing Y: " << b.y + i + movey << endl;
+                // DEBUG cout << "Current testing X: " << b.x + j + movex << endl;
+                // DEBUG cout << "Current testing value: " << playfield.playField[b.y + i + movey][b.x + j + movex] << endl;
             }
         }
     }
-    // If there is a collision, change moveable to false
-
+    if (moveable)
+    {
+        cout << "Success!" << endl;
+    }
+    else
+    {
+        cout << "Failed!" << endl;
+    }
     return moveable;
 }
 
+// Writing current block in regards to its coordinates to the board
 void game::writeToBoard()
 {
     for(int i = 0; i < 4; i++)
@@ -106,7 +132,58 @@ void game::writeToBoard()
     }
 }
 
+// Method to clear the board before writing to it
+void game::clearBoard()
+{
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            if (b.blockshape[b.blocktype][b.rotation][i][j] != 0)
+            {
+                // replace every nonzero block spot to zero
+                playfield.playField[b.y + i][b.x + j] = 0;
+            }
+        }
+    }
+}
+
+// Updating the game board
 void game::updateMove()
 {
+    if (canMove(0, 0, 1))
+    {
+        clearBoard();
+        b.moveDown();
+    }
+    writeToBoard();
 
+}
+
+// Checking if the block can move left, if so move block left
+void game::moveLeft()
+{
+    // Clearing the board to check for collisions
+    clearBoard();
+    if(canMove(0, -1, 0))
+    {
+        // Moving left if possible
+        b.moveLeft();
+    }
+    // Writing to board regardless if it moved or not
+    writeToBoard();
+}
+
+// Checking if block can move right, if so move right
+void game::moveRight()
+{
+    // Clearing the board to check for collisions
+    clearBoard();
+    if(canMove(0, 1, 0))
+    {
+        // Moving left if possible
+        b.moveRight();
+    }
+    // Writing to board regardless if it moved or not
+    writeToBoard();
 }
