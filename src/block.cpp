@@ -73,6 +73,11 @@ void Block::moveDown()
 
 void Block::reset()
 {
+    srand((unsigned)time(0));
+    int bs;
+    bs = (rand()%6);
+    cout << bs << "\n";
+
     blocktype = 0;
 	rotation = 0;
 
@@ -82,7 +87,7 @@ void Block::reset()
 	just fun array stuff there.
 	*/
 	x = 3;
-	y = -1;
+	y = 0;
 
 	// Setting hit bottom to false
 	bool hitbottom = false;

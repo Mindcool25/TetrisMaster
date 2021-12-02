@@ -17,12 +17,15 @@ int main()
     cout << "TetrisMaster\nC++ Edition\n" << endl;
     game run;
     cout << run.playfield;
-    for(int i = 0; i < 100; i++)
+    for(int i = 0; i < 150; i++)
     {
-        cout << "in for loop" << endl;
+        run.moveLeft();
+        cout << run.playfield;
         run.updateMove();
         // run.moveRight();
         cout << run.playfield;
+        cout << "Block X: " << run.b.x << endl;
+        cout << "Block Y: " << run.b.y << endl;
         /*
             TODO:
             - Add function that creates new block when the current block hits the floor / other blocks

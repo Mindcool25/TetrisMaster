@@ -99,9 +99,9 @@ bool game::canMove(int rotateval, int movex, int movey)
                     moveable = false;
                     cout << "Hit wall or floor" << endl;
                 }
-                // DEBUG cout << "Current testing Y: " << b.y + i + movey << endl;
-                // DEBUG cout << "Current testing X: " << b.x + j + movex << endl;
-                // DEBUG cout << "Current testing value: " << playfield.playField[b.y + i + movey][b.x + j + movex] << endl;
+                cout << "Current testing Y: " << b.y + i + movey << endl;
+                cout << "Current testing X: " << b.x + j + movex << endl;
+                cout << "Current testing value: " << playfield.playField[b.y + i + movey][b.x + j + movex] << endl;
             }
         }
     }
