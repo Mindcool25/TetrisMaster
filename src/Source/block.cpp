@@ -1,5 +1,5 @@
 #include <iostream>
-#include "block.h"
+#include "../Headers/block.hpp"
 
 using namespace std;
 
@@ -73,12 +73,12 @@ void Block::moveDown()
 
 void Block::reset()
 {
-    srand((unsigned)time(0));
+    //srand((unsigned)time(0));//setting each time makes it not as random
     int bs;
     bs = (rand()%6);
-    cout << bs << "\n";
+    // DEBUG cout << bs << "\n";
 
-    blocktype = 0;
+    blocktype = bs;
 	rotation = 0;
 
 	/*

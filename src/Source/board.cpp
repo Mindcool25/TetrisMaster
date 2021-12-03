@@ -1,9 +1,10 @@
 #include <iostream>
-#include "board.h"
+#include "../Headers/board.hpp"
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "colors.h"
+#include "../Headers/board.hpp"
+#include "../Headers/colors.hpp"
 
 using namespace std;
 

@@ -1,6 +1,6 @@
 #pragma once
-#include "block.h"
-#include "board.h"
+#include "../Headers/block.hpp"
+#include "../Headers/board.hpp"
 
 class game{
 	public:

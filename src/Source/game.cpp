@@ -7,10 +7,9 @@
 #endif
 
 #include <iostream>
-#include "game.h"
-#include "block.h"
-#include "board.h"
-#include "curses.h"
+#include "../Headers/game.hpp"
+#include "../Headers/block.hpp"
+#include "../Headers/board.hpp"
 
 using namespace std;
 
@@ -50,12 +49,12 @@ game::game(board bo, Block bl, int place, int one, int two, int three, int tetri
 // Private methods
 bool game::canMove(int rotateval, int movex, int movey)
 {
-    cout << "Checking..." << endl;
-    cout << "Rotation: " << rotateval << endl;
-    cout << "Movex: " << movex << endl;
-    cout << "Movey: " << movey << endl;
+    // DEBUG cout << "Checking..." << endl;
+    // DEBUG cout << "Rotation: " << rotateval << endl;
+    // DEBUG cout << "Movex: " << movex << endl;
+    // DEBUG cout << "Movey: " << movey << endl;
     bool moveable = true;
-    int clearboard[20][10];
+    int clearboard[20][10];//y, x
     // create a copy of the board array so we have a non-destructive way of checking collisions
     // Has to be done through a loop... one thing python does better right there
     // Oh well, c++ faster and speed is what I need
@@ -64,7 +63,7 @@ bool game::canMove(int rotateval, int movex, int movey)
 	    for(int j = 0; j < 10; j++)
 	    {
 		    clearboard[i][j] = playfield.playField[i][j];
-	    }
+         }
     }
     // clear the old block from the board to not detect itself
     // Done through a loop again (thanks c++)
@@ -75,9 +74,17 @@ bool game::canMove(int rotateval, int movex, int movey)
             if (b.blockshape[b.blocktype][b.rotation][i][j] != 0)
             {
                 // replace every nonzero block spot to zero
-                clearboard[i][j] = 0;
+                //   need to add the block x and y to clear correct array elements
+                clearboard[b.y + i][b.x + j] = 0;
+                //cout << "!";
             }
+            else
+            {
+                //cout << "_ ";
+            }
+            //cout << "c" <<clearboard[b.y + i][b.x + j] << "(" <<b.blockshape[b.blocktype][b.rotation][i][j]<<")";
         }
+        //cout << endl;
     }
     // check for collisions with intended transformation, only check the spots that != 0
     for(int i = 0; i < 4; i++)
@@ -92,26 +99,27 @@ bool game::canMove(int rotateval, int movex, int movey)
                     // If there is a collision, change moveable to false
                     // DEBUG cout << clearboard[b.y + i + movey][b.x + j + movex] << endl;
                     moveable = false;
-                    cout << "Hit another thing" << endl;
+                    // DEBUG cout << "Hit another thing" << endl;
                 }
                 if(b.y + i + movey > 19 || b.x + j + movex > 9 || b.x + j + movex < 0)
                 {
                     moveable = false;
-                    cout << "Hit wall or floor" << endl;
+                    // DEBUG cout << "Hit wall or floor" << endl;
                 }
-                cout << "Current testing Y: " << b.y + i + movey << endl;
-                cout << "Current testing X: " << b.x + j + movex << endl;
-                cout << "Current testing value: " << playfield.playField[b.y + i + movey][b.x + j + movex] << endl;
+                // DEBUG cout << "Current testing Y: " << b.y + i + movey << endl;
+                // DEBUG cout << "Current testing X: " << b.x + j + movex << endl;
+                // DEBUG cout << "Current testing value: " << playfield.playField[b.y + i + movey][b.x + j + movex] << endl;
+                // DEBUG cout << "Current clearboard value: " << clearboard[b.y + i + movey][b.x + j + movex] << endl;
             }
         }
     }
     if (moveable)
     {
-        cout << "Success!" << endl;
+        // DEBUG cout << "Success!" << endl;
     }
-    else
+    else //cannot move
     {
-        cout << "Failed!" << endl;
+        // DEBUG cout << "Failed!" << endl;
     }
     return moveable;
 }
@@ -161,11 +169,11 @@ void game::updateMove()
         if(!b.hitbottom)
         {
             b.hitbottom = true;
-            cout << "hit bottom" << endl;
+            // DEBUG cout << "hit bottom" << endl;
         }
         else
         {
-            cout << "Creating new block?" << endl;
+            // DEBUG cout << "Creating new block?" << endl;
             b.reset();
         }
     }
