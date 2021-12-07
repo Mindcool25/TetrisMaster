@@ -1,4 +1,3 @@
-// This stuff is for crossplatform delay
 #ifdef _WINDOWS
 #include <windows.h>
 #else
@@ -63,8 +62,9 @@ bool game::canMove(int rotateval, int movex, int movey)
 	    for(int j = 0; j < 10; j++)
 	    {
 		    clearboard[i][j] = playfield.playField[i][j];
-         }
+        }
     }
+
     // clear the old block from the board to not detect itself
     // Done through a loop again (thanks c++)
     for(int i = 0; i < 4; i++)
@@ -76,50 +76,39 @@ bool game::canMove(int rotateval, int movex, int movey)
                 // replace every nonzero block spot to zero
                 //   need to add the block x and y to clear correct array elements
                 clearboard[b.y + i][b.x + j] = 0;
-                //cout << "!";
+                // DEBUG cout << "!";
             }
             else
             {
-                //cout << "_ ";
+                // DEBUG cout << "_";
             }
-            //cout << "c" <<clearboard[b.y + i][b.x + j] << "(" <<b.blockshape[b.blocktype][b.rotation][i][j]<<")";
+            // DEBUG cout << "c" <<clearboard[b.y + i][b.x + j] << "(" <<b.blockshape[b.blocktype][b.rotation][i][j]<<")";
         }
-        //cout << endl;
+        cout << endl;
     }
+
     // check for collisions with intended transformation, only check the spots that != 0
     for(int i = 0; i < 4; i++)
     {
         for(int j = 0; j < 4; j++)
         {
             // Making sure that the space it is searching is indeed not 0
-            if(b.blockshape[b.blocktype][b.rotation][i][j] != 0)
+            if(b.blockshape[b.blocktype][b.rotation + rotateval][i][j] != 0)
             {
                 if(clearboard[b.y + i + movey][b.x + j + movex] != 0)
                 {
                     // If there is a collision, change moveable to false
                     // DEBUG cout << clearboard[b.y + i + movey][b.x + j + movex] << endl;
                     moveable = false;
-                    // DEBUG cout << "Hit another thing" << endl;
+                    break;
                 }
                 if(b.y + i + movey > 19 || b.x + j + movex > 9 || b.x + j + movex < 0)
                 {
                     moveable = false;
-                    // DEBUG cout << "Hit wall or floor" << endl;
+                    break;
                 }
-                // DEBUG cout << "Current testing Y: " << b.y + i + movey << endl;
-                // DEBUG cout << "Current testing X: " << b.x + j + movex << endl;
-                // DEBUG cout << "Current testing value: " << playfield.playField[b.y + i + movey][b.x + j + movex] << endl;
-                // DEBUG cout << "Current clearboard value: " << clearboard[b.y + i + movey][b.x + j + movex] << endl;
             }
         }
-    }
-    if (moveable)
-    {
-        // DEBUG cout << "Success!" << endl;
-    }
-    else //cannot move
-    {
-        // DEBUG cout << "Failed!" << endl;
     }
     return moveable;
 }
@@ -173,12 +162,22 @@ void game::updateMove()
         }
         else
         {
+            playfield.gravity();
             // DEBUG cout << "Creating new block?" << endl;
+            // TODO add a function like canMove without clearing the board
+
             b.reset();
+
+            if(!canSpawn())
+            {
+                cout << "GAME OVER" << endl;
+                Sleep(4000);
+                exit(0)
+            }
         }
+
     }
     writeToBoard();
-
 }
 
 // Checking if the block can move left, if so move block left
@@ -207,4 +206,53 @@ void game::moveRight()
     }
     // Writing to board regardless if it moved or not
     writeToBoard();
+}
+
+void game::rotateLeft()
+{
+    // Clearing the board to check for collisions
+    clearBoard();
+    if(canMove(-1, 0, 0))
+    {
+        // Moving left if possible
+        b.rotateLeft();
+    }
+    // Writing to board regardless if it moved or not
+    writeToBoard();
+}
+
+void game::rotateRight()
+{
+    clearBoard();
+    if(canMove(1, 0, 0))
+    {
+        b.rotateRight();
+    }
+    writeToBoard();
+}
+
+bool game::canSpawn()
+{
+    bool moveable = true;
+    // check for collisions with intended transformation, only check the spots that != 0
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            // Making sure that the space it is searching is indeed not 0
+            if(b.blockshape[b.blocktype][b.rotation][i][j] != 0)
+            {
+                if(playfield.playField[b.y + i][b.x + j] != 0)
+                {
+                    // If there is a collision, change moveable to false
+                    // DEBUG cout << clearboard[b.y + i + movey][b.x + j + movex] << endl;
+                    moveable = false;
+                    cout << "Hit another thing" << endl;
+                    break;
+                }
+
+            }
+        }
+    }
+    return moveable;
 }

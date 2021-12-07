@@ -75,7 +75,7 @@ void Block::reset()
 {
     //srand((unsigned)time(0));//setting each time makes it not as random
     int bs;
-    bs = (rand()%6);
+    bs = (rand()%7);
     // DEBUG cout << bs << "\n";
 
     blocktype = bs;

@@ -5,7 +5,7 @@ using namespace std;
 
 class board
 {
-    public:
+    public:]
         // Public variables
         int playField[20][10];
 
@@ -16,7 +16,7 @@ class board
         void gravity();
 
         // Default contsructor
-        board();
+       board();
 
         // Overloaded constructors
         friend ostream& operator << (ostream &out, board &b);

@@ -36,6 +36,7 @@ class game{
 		// private methods
 		// checking if the intended movement is possible
 		bool canMove(int rotateval = 0, int movex = 0, int movey = 0);
+		bool canSpawn();
 		// Moving down once
 		void moveDown();
 };
