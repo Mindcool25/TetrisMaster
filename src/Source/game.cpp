@@ -172,7 +172,7 @@ void game::updateMove()
             {
                 cout << "GAME OVER" << endl;
                 Sleep(4000);
-                exit(0)
+                break;
             }
         }
 
@@ -229,6 +229,14 @@ void game::rotateRight()
         b.rotateRight();
     }
     writeToBoard();
+}
+
+void game::SlamDown()
+{
+    while(updateMove())
+    {
+        // loop until this block cannot move more
+    }
 }
 
 bool game::canSpawn()

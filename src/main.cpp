@@ -63,7 +63,7 @@ int main()
             - Write end game condition
             - Add framing and delay
             - Clear screen
-            W Add rotate block methods
+            D Add rotate block methods
         */
 
     }

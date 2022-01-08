@@ -20,6 +20,7 @@ class game{
 		Block b;
 
 		// Public movement methods
+		void SlamDown()
 		void moveLeft();
 		void moveRight();
 		void rotateLeft();
@@ -29,7 +30,7 @@ class game{
 		// Writing block to board
 		void writeToBoard();
 		void clearBoard();
-		// Updating the
+		// Updating the current movement
 		void updateMove();
 
 	private:

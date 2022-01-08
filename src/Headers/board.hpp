@@ -5,7 +5,7 @@ using namespace std;
 
 class board
 {
-    public:]
+    public:
         // Public variables
         int playField[20][10];
 
