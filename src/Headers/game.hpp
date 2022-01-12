@@ -20,7 +20,7 @@ class game{
 		Block b;
 
 		// Public movement methods
-		void SlamDown()
+		void SlamDown();
 		void moveLeft();
 		void moveRight();
 		void rotateLeft();
