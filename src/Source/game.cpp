@@ -172,7 +172,7 @@ void game::updateMove()
             {
                 cout << "GAME OVER" << endl;
                 Sleep(4000);
-                break;
+//                break;
             }
         }
 
