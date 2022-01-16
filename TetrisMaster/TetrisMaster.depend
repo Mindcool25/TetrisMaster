@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1641965212 source:c:\users\user\documents\github\tetrismaster\src\source\block.cpp
+	<iostream>
+	"../Headers/block.hpp"
+
+1641965212 c:\users\user\documents\github\tetrismaster\src\headers\block.hpp
+
+1641965212 source:c:\users\user\documents\github\tetrismaster\src\source\board.cpp
+	<iostream>
+	"../Headers/board.hpp"
+	<time.h>
+	<stdlib.h>
+	<stdio.h>
+	"../Headers/board.hpp"
+	"../Headers/colors.hpp"
+
+1641965212 c:\users\user\documents\github\tetrismaster\src\headers\board.hpp
+	<iostream>
+	<vector>
+
+1641965212 c:\users\user\documents\github\tetrismaster\src\headers\colors.hpp
+	<iostream>
+
+1642129525 source:c:\users\user\documents\github\tetrismaster\src\main.cpp
+	<iostream>
+	"Headers/board.hpp"
+	"Headers/game.hpp"
+	<windows.h>
+	<unistd.h>
+
+1641965586 c:\users\user\documents\github\tetrismaster\src\headers\game.hpp
+	"../Headers/block.hpp"
+	"../Headers/board.hpp"
+
+1642126278 source:c:\users\user\documents\github\tetrismaster\src\source\game.cpp
+	<windows.h>
+	<unistd.h>
+	<iostream>
+	"../Headers/game.hpp"
+	"../Headers/block.hpp"
+	"../Headers/board.hpp"
+
