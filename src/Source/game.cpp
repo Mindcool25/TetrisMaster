@@ -233,9 +233,9 @@ void game::rotateRight()
 
 void game::SlamDown()
 {
-    while(updateMove())
+    while(canMove(0,0,1))
     {
-        // loop until this block cannot move more
+        b.moveDown();
     }
 }
 
