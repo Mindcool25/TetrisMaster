@@ -59,7 +59,7 @@ int main()
             TODO:
             D Add function that creates new block when the current block hits the floor / other blocks
             D Write moveRight function
-            - Write slam function ( Just a for loop with moving down and checking for collision ever time. Simple stuff )
+            D Write slam function ( Just a for loop with moving down and checking for collision ever time. Simple stuff )
             - Write end game condition
             - Add framing and delay
             - Clear screen
