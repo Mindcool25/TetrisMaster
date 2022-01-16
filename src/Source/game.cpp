@@ -98,11 +98,11 @@ bool game::canMove(int rotateval, int movex, int movey)
                 if(clearboard[b.y + i + movey][b.x + j + movex] != 0)
                 {
                     // If there is a collision, change moveable to false
-                    // DEBUG cout << clearboard[b.y + i + movey][b.x + j + movex] << endl;
+                    cout << clearboard[b.y + i + movey][b.x + j + movex] << endl;
                     moveable = false;
                     break;
                 }
-                if(b.y + i + movey > 19 || b.x + j + movex > 9 || b.x + j + movex < 0)
+                if(b.y + i + movey > 19 || b.x + j + movex > 9 || b.x + j + movex < 0 || b.y + i + movey > 20)
                 {
                     moveable = false;
                     break;
@@ -162,17 +162,33 @@ void game::updateMove()
         }
         else
         {
-            playfield.gravity();
+            int lines = playfield.gravity();
+            if (lines == 1)
+            {
+                score += onelineBonus;
+            }
+            else if (lines == 2)
+            {
+                score += twolineBonus;
+            }
+            else if (lines == 3)
+            {
+                score += threelineBonus;
+            }
+            else if (lines == 4)
+            {
+                score += tetrisBonus;
+            }
+            score += placeBonus;
+
             // DEBUG cout << "Creating new block?" << endl;
-            // TODO add a function like canMove without clearing the board
 
             b.reset();
 
             if(!canSpawn())
             {
                 cout << "GAME OVER" << endl;
-                Sleep(4000);
-//                break;
+                running = false;
             }
         }
 
@@ -229,14 +245,6 @@ void game::rotateRight()
         b.rotateRight();
     }
     writeToBoard();
-}
-
-void game::SlamDown()
-{
-    while(canMove(0,0,1))
-    {
-        b.moveDown();
-    }
 }
 
 bool game::canSpawn()

@@ -13,7 +13,7 @@ class board
         string printBoard();
         void resetBoard();
         void checkIfRow();
-        void gravity();
+        int gravity();
 
         // Default contsructor
        board();

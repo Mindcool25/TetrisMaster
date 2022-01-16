@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1642306213 source:/home/kylet/Documents/GitHub/TetrisMaster/src/main.cpp
+	<iostream>
+	"Headers/board.hpp"
+	"Headers/game.hpp"
+	<windows.h>
+	<unistd.h>
+
+1642306213 /home/kylet/Documents/GitHub/TetrisMaster/src/Headers/board.hpp
+	<iostream>
+	<vector>
+
+1642306213 /home/kylet/Documents/GitHub/TetrisMaster/src/Headers/game.hpp
+	"../Headers/block.hpp"
+	"../Headers/board.hpp"
+
+1642306213 /home/kylet/Documents/GitHub/TetrisMaster/src/Headers/block.hpp
+
+1642306213 source:/home/kylet/Documents/GitHub/TetrisMaster/src/Source/block.cpp
+	<iostream>
+	"../Headers/block.hpp"
+
+1642306213 source:/home/kylet/Documents/GitHub/TetrisMaster/src/Source/board.cpp
+	<iostream>
+	"../Headers/board.hpp"
+	<time.h>
+	<stdlib.h>
+	<stdio.h>
+	"../Headers/board.hpp"
+	"../Headers/colors.hpp"
+
+1642306213 /home/kylet/Documents/GitHub/TetrisMaster/src/Headers/colors.hpp
+	<iostream>
+
+1642309446 source:/home/kylet/Documents/GitHub/TetrisMaster/src/Source/game.cpp
+	<windows.h>
+	<unistd.h>
+	<iostream>
+	"../Headers/game.hpp"
+	"../Headers/block.hpp"
+	"../Headers/board.hpp"
+

@@ -51,7 +51,7 @@ void board::checkIfRow()
     }
 }
 
-void board::gravity()
+int board::gravity()
 {
 	// Iterate through vector
 	for (int i = 0; i < (int)rows.size(); i++)
@@ -68,6 +68,7 @@ void board::gravity()
 				playField[0][k] = 0;
 		}
  	}
+ 	return (int)rows.size();
 }
 
 ostream& operator << (ostream &out, board &t)

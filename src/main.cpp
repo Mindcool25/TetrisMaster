@@ -28,7 +28,7 @@ int main()
     cout << "TetrisMaster\nC++ Edition\n" << endl;
     game run;
     cout << run.playfield;
-    for(int i = 0; i < 1000; i++)
+    while(run.running)
     {
         system("clear");
         RandMove = (rand()%4);
@@ -52,20 +52,27 @@ int main()
         }
         cout << run.playfield;
         run.updateMove();
-        std::system("clear");
+        //std::system("clear");
         cout << run.playfield;
-        Sleep(300);
         /*
             TODO:
             D Add function that creates new block when the current block hits the floor / other blocks
             D Write moveRight function
             D Write slam function ( Just a for loop with moving down and checking for collision ever time. Simple stuff )
+<<<<<<< Updated upstream
             - Write end game condition
             - Add framing and delay
             - Clear screen
+=======
+            D Write end game condition
+            D Add framing and delay
+            D Clear screen
+>>>>>>> Stashed changes
             D Add rotate block methods
+            D Force change for github
         */
 
     }
+    cout << run.score << endl;
     return 0;
 }

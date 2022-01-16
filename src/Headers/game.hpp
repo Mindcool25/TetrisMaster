@@ -15,12 +15,14 @@ class game{
 		// score value, starts at 0
 		int score = 0;
 
+		// Variable to check if game is still running
+		bool running;
+
 		// Objects that imma use later
 		board playfield;
 		Block b;
 
 		// Public movement methods
-		void SlamDown();
 		void moveLeft();
 		void moveRight();
 		void rotateLeft();
@@ -30,7 +32,7 @@ class game{
 		// Writing block to board
 		void writeToBoard();
 		void clearBoard();
-		// Updating the current movement
+		// Updating the
 		void updateMove();
 
 	private:
