@@ -1,10 +1,11 @@
 /*
 TetrisMaster
 https://github.com/Mindcool25/tetrismaster
-Written by Zach Marshall
+Written by Zach Marshall, AI implementation and debugging by Kyle Tracy
 made using https://tetris.fandom.com/wiki/Tetris_Guideline as a guideline for game rules and such
 */
 #include <iostream>
+#include <Python.h>
 #include "Headers/board.hpp"
 #include "Headers/game.hpp"
 

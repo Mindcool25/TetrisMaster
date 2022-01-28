@@ -31,6 +31,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../src/Headers/block.hpp" />
+		<Unit filename="../src/Headers/board.hpp" />
+		<Unit filename="../src/Headers/colors.hpp" />
+		<Unit filename="../src/Headers/game.hpp" />
+		<Unit filename="../src/Headers/neat.hpp" />
+		<Unit filename="../src/Source/block.cpp" />
+		<Unit filename="../src/Source/board.cpp" />
+		<Unit filename="../src/Source/game.cpp" />
+		<Unit filename="../src/Source/neat.cpp" />
+		<Unit filename="../src/main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
